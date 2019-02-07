@@ -1,6 +1,7 @@
+/*
 $(document).ready(function () {
 
-    /* For the sticky navigation */
+    /!* For the sticky navigation *!/
     $('.js--section-features').waypoint(function (direction) {
         if (direction == "down") {
             $('nav').addClass('sticky');
@@ -11,7 +12,7 @@ $(document).ready(function () {
         }
     }, { offset: '60px' });
 
-     /* For the scrolling */
+     /!* For the scrolling *!/
     $(function() {
         $('a[href*=#]:not([href=#])').click(function() {
             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -27,7 +28,7 @@ $(document).ready(function () {
         });
     });
 
-    /* Animations on scroll */
+    /!* Animations on scroll *!/
 
     $('.js--wp-1').waypoint(function (direction) {
         $('.js--wp-1').addClass('animated fadeIn');
@@ -46,7 +47,7 @@ $(document).ready(function () {
     }, { offset: '50%' });
 
 
-    /* Mobile navigation */
+    /!* Mobile navigation *!/
 
     $('.js--nav-icon').click(function () {
         var nav = $('.js--main-nav');
@@ -58,5 +59,17 @@ $(document).ready(function () {
         }
         nav.slideToggle(200);
     });
+
+});*/
+
+
+
+document.querySelector('.mobile-nav-icon').addEventListener('click', function () {
+    var nav = document.querySelector('.navigation-list');
+    var icon = document.querySelector('.mobile-nav-icon i');
+
+    icon.classList.toggle('ion-navicon-round');
+    icon.classList.toggle('ion-close-round');
+    nav.classList.toggle('in');
 
 });

@@ -52,18 +52,34 @@
         /*margin: 0 0 4% 0;*/
     /*}*/
 
-    /*.mobile-nav-icon {*/
-        /*display: inline-block;*/
-    /*}*/
-    /*.main-nav {*/
-        /*display: none;*/
-        /*float: left;*/
-        /*margin-top: 35px;*/
-        /*margin-left: 25px;*/
-    /*}*/
-    /*.main-nav li {*/
-        /*display: block;*/
-    /*}*/
+    .mobile-nav-icon {
+        display: inline-block;
+    }
+    .navigation-list {
+        position: fixed;
+        z-index: 9999;
+        top: 50px;
+        right: -80%;
+        width: 80%;
+        background-color: #ababab;
+        padding: 0;
+        margin: 0;
+        transition: all .25s ease-out;
+    }
+
+    .navigation-list.in {
+        right: 0;
+    }
+
+    .navigation-list li {
+        display: block;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        height: 50px;
+    }
     /*.main-nav li a:link,*/
     /*.main-nav li a:visited {*/
         /*display: block;*/
