@@ -104,6 +104,7 @@ h1 {
 .section-container {
     max-width: 1300px;
     margin: 30px auto;
+    z-index: 0;
 }
 
 .page-title {
@@ -137,6 +138,7 @@ h1 {
 
 .welcome-container {
     display: flex;
+    align-items: stretch;
 }
 
 .welcome-text {
@@ -148,5 +150,117 @@ h1 {
 }
 
 .welcome-quiz {
-    max-width: 50%;
+    flex: 0 0 50%;
+
+    margin: 15px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz-container {
+    flex: 1;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    height: 100%;
+}
+
+.quiz-question {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-answers {
+    display: flex;
+    margin: 10px auto;
+    width: 35%;
+    align-self: stretch;
+}
+
+.answer-button {
+    border: 2px solid #ff0032;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+    background: #fff;
+    color: #ff0032;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 5px;
+}
+
+.answer-button:hover {
+    background: #ff0032;
+    color: #fff;
+}
+
+.question {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translate(0,-50%);
+}
+
+.question.question-right {
+    transform: translate(100%,-50%);
+}
+
+.question.question-left {
+    transform: translate(-100%,-50%);
+}
+
+.quiz-steps {
+    flex: 0 0 15%;
+    display: flex;
+    margin: 10px auto;
+    /*min-width: 10%;*/
+    position: relative;
+    padding-left: 25px;
+    /*justify-content: center;*/
+}
+
+.step {
+    transition: all 0.3s ease;
+    height: 22px;
+    width: 22px;
+    border: 5px solid #fff;
+    margin: 0 10px 0 0;
+    border-radius: 12px;
+    background: linear-gradient(45deg,rgba(255,2,49,1) 0%,rgba(255,93,2,1) 100%);
+}
+
+.step.choice {
+    box-shadow: 0 0 0 2px #ff5d02;
+}
+.step.done {
+    border-radius: 22px;
+    border: none;
+}
+
+.step-back {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-right-color: rgba(255,2,49,1);
+    cursor: pointer;
+    position: absolute;
+    opacity: 1;
+    left: -7%;
+    top: -5%;
+    transition: opacity 0.3s ease;
+}
+
+.step-back.hide{
+    opacity: 0;
 }
