@@ -165,7 +165,7 @@ h1 {
     height: 100%;
 }
 
-.quiz-question {
+.quiz-questions {
     flex: 1;
     position: relative;
     overflow: hidden;
@@ -263,4 +263,5 @@ h1 {
 
 .step-back.hide{
     opacity: 0;
+    cursor: default;
 }

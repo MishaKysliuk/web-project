@@ -44,3 +44,70 @@ document.querySelectorAll('.link-dropdown-container').forEach(element => {
         }
     });
 });
+
+
+let curQuestionIndex = 1;
+
+document.querySelectorAll('.answer-button').forEach(element => {
+   element.addEventListener('click', () => {
+       const curQuestion = document.querySelector(`#question-${curQuestionIndex}`);
+       const nextQuestion = document.querySelector(`#question-${++curQuestionIndex}`);
+       curQuestion.classList.toggle('question-left');
+       nextQuestion.classList.toggle('question-right');
+       if (curQuestionIndex !== 1) {
+           document.querySelector('.step-back').classList.remove('hide');
+       } else {
+           document.querySelector('.step-back').classList.add('hide');
+       }
+       document.querySelector(`#step-${curQuestionIndex - 1}`).classList.add('done');
+       document.querySelector(`#step-${curQuestionIndex}`).classList.add('choice');
+   });
+});
+
+document.querySelector('.step-back').addEventListener('click', () => {
+    if (curQuestionIndex > 1) {
+        const curQuestion = document.querySelector(`#question-${curQuestionIndex}`);
+        const prevQuestion = document.querySelector(`#question-${--curQuestionIndex}`);
+        curQuestion.classList.toggle('question-right');
+        prevQuestion.classList.toggle('question-left');
+        if (curQuestionIndex !== 1) {
+            document.querySelector('.step-back').classList.remove('hide');
+        } else {
+            document.querySelector('.step-back').classList.add('hide');
+        }
+        document.querySelector(`#step-${curQuestionIndex + 1}`).classList.remove('choice');
+        document.querySelector(`#step-${curQuestionIndex}`).classList.remove('done');
+        document.querySelector(`#step-${curQuestionIndex}`).classList.add('choice');
+    }
+});
+
+function addQuestions() {
+    const questionsContainer = document.querySelector('.quiz-questions');
+
+    getQuizQuestions().forEach(question => {
+        const questionClassName = question.id === 1 ? 'question' : 'question question-right';
+        const questionHtml = `
+            <div id="question-${question.id}" class="${questionClassName}">${question.question}</div>
+        `;
+        questionsContainer.insertAdjacentHTML('beforeend', questionHtml);
+    });
+}
+
+addQuestions();
+
+function getQuizQuestions() {
+    return [
+        {
+            id: 1,
+            question: 'Is anonymity the most important feature to you?',
+        },
+        {
+            id: 2,
+            question: 'Does it matter if transactions are slow to process through your payment method?',
+        },
+        {
+            id: 3,
+            question: 'Some casinos might allow deposits through certain payment methods but require you to use a different withdrawal method. Is this a problem for you?'
+        }
+    ];
+}
